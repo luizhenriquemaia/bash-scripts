@@ -24,18 +24,14 @@ then
 fi
 
 sum1=0
-for ((i=0; i<${#cpf_number}; i++)); do
-    if [ "$i" -gt 8 ]; then
-        break
-    fi
-    char="${cpf_number:$i:1}"
-    sum1=$(($sum1+($char*(10-$i))))
-done
-
 sum2=0
 for ((i=0; i<${#cpf_number}; i++)); do
     if [ "$i" -gt 9 ]; then
         break
+    fi
+    if [ "$i" -lt 9 ]; then
+        char="${cpf_number:$i:1}"
+        sum1=$(($sum1+($char*(10-$i))))
     fi
     char="${cpf_number:$i:1}"
     sum2=$(($sum2+($char*(11-$i))))
